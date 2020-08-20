@@ -1,7 +1,6 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import Normalizer, StandardScaler, MinMaxScaler
 
-
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
     def __init__(self, columns):
@@ -16,7 +15,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
 
-    class Normalize(BaseEstimator, TransformerMixin):
+class Normalize(BaseEstimator, TransformerMixin):
     def __init__(self, columns, ignore_columns):
         self.columns = columns
         self.ignore_columns = ignore_columns
@@ -33,7 +32,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data[data.columns] = ct.fit_transform(X=data)
         return data
 
-class standardize(BaseEstimator, TransformerMixin):
+class Standardize(BaseEstimator, TransformerMixin):
     def __init__(self, columns, ignore_columns):
         self.columns = columns
         self.ignore_columns = ignore_columns
